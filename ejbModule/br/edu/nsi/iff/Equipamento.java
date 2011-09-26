@@ -1,4 +1,4 @@
-package br.edu.iff.nsi;
+package br.edu.nsi.iff;
 
 import java.io.Serializable;
 import javax.persistence.*;
