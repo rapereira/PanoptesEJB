@@ -54,6 +54,6 @@ public class TestePopular {
 		}
 
 		Timestamp datahorafim = new Timestamp(System.currentTimeMillis());
-		System.out.println(datahorainicio.toString() + "\n" + datahorafim.toString());
+		System.out.println("\n\n\n" + datahorainicio.toString() + "\n" + datahorafim.toString());
 	}
 }
