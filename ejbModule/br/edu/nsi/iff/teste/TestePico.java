@@ -1,0 +1,78 @@
+package br.edu.nsi.iff.teste;
+
+import java.util.UUID;
+
+import br.edu.nsi.iff.Leitura;
+import br.edu.nsi.iff.Pico;
+import br.edu.nsi.iff.controller.LeituraJPAController;
+import br.edu.nsi.iff.controller.PicoJPAController;
+
+public class TestePico {
+
+	public static void main(String[] args){
+		
+		TestePico.list();
+	}
+	
+	public static void insert(){
+//		UUID uuid = UUID.randomUUID();
+//		String uid = uuid.toString();
+		
+		String uid = "1";
+		float amplitude = 1;
+		float fase = 1;
+		float frequencia = 1;
+		
+		PicoJPAController instancePico = new PicoJPAController();
+		LeituraJPAController instanceLeitura = new LeituraJPAController();
+		
+		instancePico.insert(instanceLeitura.find("1"), uid, amplitude, fase, frequencia);
+		System.out.println("insert");
+	}
+	
+	public static void update(){
+		String uid = "2";
+		float amplitude = 2;
+		float fase = 2;
+		float frequencia = 2;
+		
+		PicoJPAController instancePico = new PicoJPAController();
+		LeituraJPAController instanceLeitura = new LeituraJPAController();
+		
+		instancePico.update(instanceLeitura.find("2"), uid, amplitude, fase, frequencia);
+		System.out.println("update");
+	}
+	
+	public static void delete(){
+		String uid = "3";
+
+		PicoJPAController instancePico = new PicoJPAController();
+		
+		instancePico.delete(uid);
+		System.out.println("delete");
+	}
+	
+	public static void list(){
+		PicoJPAController instancePico = new PicoJPAController();
+		
+		for(Pico pico : instancePico.findAll()){
+			System.out.println("\nID: " + pico.getIdpico());
+			System.out.println("Amplitude: " + pico.getAmplitude());
+			System.out.println("ID leitura: " + pico.getLeitura().getIdleitura() + "\n");
+		}
+	}
+	
+	public static void popularinsert(Leitura leitura){
+		UUID uuid = UUID.randomUUID();
+		String uid = uuid.toString();
+		
+		float amplitude = (float) (Math.random() * 4 + 1);
+		float fase = (float) (Math.random() * 180);
+		float frequencia = (float) (Math.random() * 200 + 100);
+		
+		PicoJPAController instancePico = new PicoJPAController();
+		
+		instancePico.insert(leitura, uid, amplitude, fase, frequencia);
+		System.out.println("insert pico");
+	}
+}
